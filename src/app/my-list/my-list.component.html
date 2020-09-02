@@ -1,0 +1,31 @@
+<div id="wrap">
+  <div class="row">
+    <div class="panel">
+      <input
+        type="text"
+        placeholder="Add an item here."
+        (keyup.enter)="submitItem($event)"
+      />
+      <p id="subtxt">Hit enter to add</p>
+    </div>
+  </div>
+
+  <div class="row input-example">
+    <div class="small-12 medium-12">
+      <div class="panel nplr">
+        <div
+          class="item-container"
+          *ngFor="let item of myTodoList; let i = index"
+          [attr.data-index]="i"
+          (click)="toggleTodoItem(item, i)"
+        >
+          <div class="identifier"></div>
+          <p [ngClass]="item['done'] ? 'todo-completed-class' : ''">
+            {{ item["name"] }}
+          </p>
+          <a (click)="removeItem($event, i)">X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
